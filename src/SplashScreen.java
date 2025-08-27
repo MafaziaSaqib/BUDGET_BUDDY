@@ -18,7 +18,6 @@ public class SplashScreen extends JPanel {
         barPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));
         barPanel.add(bar);
         add(barPanel, BorderLayout.SOUTH);
-
     }
     @Override
     protected void paintComponent(Graphics g) {
