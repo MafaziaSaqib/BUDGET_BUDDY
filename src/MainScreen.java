@@ -330,11 +330,7 @@ public class MainScreen extends JFrame {
         saveBtn.setForeground(new Color(0, 0, 128));
         saveBtn.setBackground(new Color(70, 130, 180));
         saveBtn.addActionListener(e -> {
-            try (FileWriter writer = new FileWriter("expenses.csv")) {
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    writer.write(model.getColumnName(i) + ",");
-                }
-                writer.write("\n");
+            try (FileWriter writer = new FileWriter("expenses.csv",true)) {
                 for (int i = 0; i < model.getRowCount(); i++) {
                     for (int j = 0; j < model.getColumnCount(); j++) {
                         writer.write(model.getValueAt(i, j).toString() + ",");
@@ -354,8 +350,13 @@ public class MainScreen extends JFrame {
         loadBtn.addActionListener(e -> {
             try (BufferedReader br = new BufferedReader(new FileReader("expenses.csv"))) {
                 model.setRowCount(0);
-                String line = br.readLine();
+                String line;
+                boolean firstLine = true;
                 while ((line = br.readLine()) != null) {
+                    if (firstLine) {
+                        firstLine = false;
+                        continue;
+                    }
                     String[] values = line.split(",");
                     if (values.length == model.getColumnCount()) {
                         model.addRow(values);
