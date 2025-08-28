@@ -71,7 +71,6 @@ public class MainScreen extends JFrame {
 
         JPanel subPanel2 = new JPanel();
         subPanel2.setLayout(new BoxLayout(subPanel2, BoxLayout.Y_AXIS));
-        subPanel2.setBorder(BorderFactory.createTitledBorder("Summary"));
         subPanel2.setOpaque(false);
         subPanel2.setPreferredSize(new Dimension(410,400));
         JPanel summaryDetails = new JPanel();
@@ -308,12 +307,12 @@ public class MainScreen extends JFrame {
         totalLabel.setFont(new Font("Arial", Font.BOLD, 20));
 
         subPanel2.add(Box.createVerticalStrut(20));
-        subPanel2.add(totalLabel);
         subPanel2.add(Box.createVerticalStrut(10));
         summaryDetails.setLayout(new BoxLayout(summaryDetails, BoxLayout.Y_AXIS));
         summaryDetails.setOpaque(false);
         summaryDetails.add(labelsPanel);
         summaryDetails.add(Box.createVerticalStrut(15));
+        summaryDetails.setBorder(BorderFactory.createTitledBorder("Summary"));
         summaryDetails.add(pieContainer);
         subPanel2.add(summaryDetails);
 
@@ -459,7 +458,7 @@ public class MainScreen extends JFrame {
         highestLabel.setFont(new Font("Arial", Font.BOLD, 18));
         labelsPanel.add(Box.createVerticalStrut(8));
         labelsPanel.add(highestLabel);
-
+        labelsPanel.add(totalLabel);
         labelsPanel.revalidate();
         labelsPanel.repaint();
         pieChartPanel.repaint();
